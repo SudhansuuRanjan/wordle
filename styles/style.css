@@ -48,7 +48,8 @@ body {
   grid-column: span 3;
 }
 
-.key:hover, .key:focus {
+.key:hover,
+.key:focus {
   --lightness-offset: 10%;
 }
 
@@ -56,16 +57,16 @@ body {
   --lightness: 23%;
 }
 
-.key.wrong-location{
- --hue:49;
- --saturation:51%;
- --lightness: 47%;
+.key.wrong-location {
+  --hue: 49;
+  --saturation: 51%;
+  --lightness: 47%;
 }
 
-.key.correct{
---hue: 115;
---saturation: 29%;
---lightness:43%;
+.key.correct {
+  --hue: 115;
+  --saturation: 29%;
+  --lightness: 43%;
 }
 
 .guess-grid {
@@ -75,20 +76,20 @@ body {
   flex-grow: 1;
   grid-template-columns: repeat(5, 4em);
   grid-template-rows: repeat(6, 4em);
-  gap: .25em;
+  gap: 0.25em;
   margin-bottom: 1em;
 }
 
-.tile{
-    font-size: 2em;
-    color:white;
-    border: 0.05em solid hsl(240,2%,23%);
-    text-transform: uppercase;
-    font-weight: 600;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    user-select: none;
+.tile {
+  font-size: 2em;
+  color: white;
+  border: 0.05em solid hsl(240, 2%, 23%);
+  text-transform: uppercase;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
 }
 
 .tile[data-state="active"] {
@@ -108,4 +109,58 @@ body {
 .tile[data-state="correct"] {
   border: none;
   background-color: hsl(115, 29%, 43%);
+}
+
+.tile.shake {
+  animation: shake 250ms ease-in-out;
+}
+
+@keyframes shake {
+  10% {
+    transform: translateX(-5%);
+  }
+  30% {
+    transform: translateX(5%);
+  }
+  50% {
+    transform: translateX(-7.5%);
+  }
+  70% {
+    transform: translateX(7.5%);
+  }
+  90% {
+    transform: translateX(5%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.alert-container {
+  position: fixed;
+  top: 10vh;
+  left: 50vw;
+  transform: translateX(-50%);
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.alert {
+  pointer-events: none;
+  background-color: hsl(204, 7%, 85%);
+  padding: 0.75em;
+  border-radius: 0.25em;
+  opacity: 1;
+  transition: opacity 500ms ease-in-out;
+  margin-bottom: 0.5em;
+}
+
+.alert:last-child {
+  margin-bottom: 0;
+}
+
+.alert.hide {
+  opacity: 0;
 }
