@@ -13,11 +13,6 @@ body {
   padding: 1em;
   font-size: clamp(0.85rem, 2.5vmin, 1.5rem);
 }
-@media screen and (max-width:600px) {
-  body {
-    height: 100vh;
-  }
-}
 
 .keyboard {
   display: grid;
@@ -198,4 +193,19 @@ body {
 
 .alert.hide {
   opacity: 0;
+}
+
+@media screen and (max-width:600px) {
+  .keyboard {
+  display: grid;
+  display: -ms-grid;
+  grid-template-columns: repeat(20, minmax(auto, 1.25em));
+  grid-auto-rows: 3em;
+  gap: 0.25em;
+  justify-content: center;
+  transform: translateY(-4rem);
+ }
+ .guess-grid{
+   transform: translateY(-4rem);
+ }
 }
